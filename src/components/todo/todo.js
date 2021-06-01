@@ -16,12 +16,12 @@ function ToDo() {
 
   const _toggleComplete = id => {
 
-    let item = this.state.list.filter(i => i._id === id)[0] || {};
+    let item = list.filter(i => i._id === id)[0] || {};
 
     if (item._id) {
       item.complete = !item.complete;
-      let list = this.state.list.map(listItem => listItem._id === item._id ? item : listItem);
-      this.setState({ list });
+      let list2 = list.map(listItem => listItem._id === item._id ? item : listItem);
+      setList(list2);
     }
 
   };
