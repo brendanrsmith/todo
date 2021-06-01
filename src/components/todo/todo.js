@@ -26,6 +26,7 @@ function ToDo() {
 
   };
 
+  // Seed To Do items to list upon page load
   useEffect(() => {
     let list = [
       { _id: 1, complete: false, text: 'Clean the Kitchen', difficulty: 3, assignee: 'Person A' },
@@ -37,6 +38,12 @@ function ToDo() {
 
     setList(list);
   }, [])
+
+  // Update title of browser with complete / incomplete count
+  useEffect(() => {
+    let todoCount = list.filter(item => !item.complete).length;
+    document.title = `To Do List: ${todoCount}`;
+  })
 
   return (
     <>

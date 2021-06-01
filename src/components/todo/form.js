@@ -26,7 +26,7 @@ function TodoForm(props) {
             name="text"
             placeholder="Add To Do List Item"
             onChange={_handleInputChange}
-            required='true'
+            required={true}
           />
         </label>
         <label>
