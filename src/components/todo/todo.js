@@ -26,6 +26,11 @@ function ToDo() {
 
   };
 
+  const _deleteItem = id => {
+    let list2 = list.filter(i => i._id !== id);
+    setList(list2);
+  }
+
   // Seed To Do items to list upon page load
   useEffect(() => {
     let list = [
@@ -63,6 +68,7 @@ function ToDo() {
           <TodoList
             list={list}
             handleComplete={_toggleComplete}
+            handleDelete={_deleteItem}
           />
         </div>
       </section>

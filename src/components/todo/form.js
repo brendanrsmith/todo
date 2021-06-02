@@ -21,8 +21,8 @@ function TodoForm(props) {
 
   return (
     <>
-      <h3>Add Item</h3>
       <Form onSubmit={_handleSubmit}>
+      <h3>Add Item</h3>
         <Form.Group>
           <Form.Label>To Do Item</Form.Label>
           <Form.Control

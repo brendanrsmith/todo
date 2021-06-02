@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
 
 function TodoList(props) {
@@ -11,8 +12,9 @@ function TodoList(props) {
           key={item._id}
         >
           <Alert onClick={() => props.handleComplete(item._id)}>
-              {item.text}
+              {item.text} ({item.difficulty}) > {item.assignee}
           </Alert>
+          <Button variant="outline-dark" onClick={() => props.handleDelete(item._id)}>X</Button>
         </li>
       ))}
     </ul>
