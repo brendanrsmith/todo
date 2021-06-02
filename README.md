@@ -7,7 +7,7 @@
 ### Links and Resources
 
 - [deployed site]()
-- [pull request]()
+- [pull request](https://github.com/brendigler/todo/pull/1)
 
 ### Setup
 
