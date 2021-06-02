@@ -11,7 +11,6 @@ function App() {
       <Navbar bg="light" variant="light">
         <Navbar.Brand href="#">Home</Navbar.Brand>
       </Navbar>
-      <br />
       <ToDo />
     </>
   );

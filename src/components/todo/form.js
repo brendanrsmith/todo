@@ -40,7 +40,6 @@ function TodoForm(props) {
           <Form.Label>Assigned To</Form.Label>
           <Form.Control type="text" name="assignee" placeholder="Assigned To" onChange={_handleInputChange} />
         </Form.Group>
-        <br/>
         <Button variant="outline-dark" type="submit">Add Item</Button>
       </Form>
     </>

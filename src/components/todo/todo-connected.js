@@ -51,11 +51,27 @@ const ToDo = () => {
         .catch(console.error);
     }
   };
-  
+
   const _deleteItem = id => {
-    let list2 = list.filter(i => i._id !== id);
-    setList(list2);
-  }
+
+    let item = list.filter(i => i._id === id)[0] || {};
+
+    if (item._id) {
+
+      let url = `${todoAPI}/${id}`;
+
+      fetch(url, {
+        method: 'delete',
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: { 'Content-Type': 'application/json' }
+      })
+        .then(() => {
+          _getTodoItems();
+        })
+        .catch(console.error);
+    }
+  };
 
   const _getTodoItems = () => {
     fetch(todoAPI, {
@@ -68,6 +84,12 @@ const ToDo = () => {
   };
 
   useEffect(_getTodoItems, []);
+
+  // Update title of browser with complete / incomplete count
+  useEffect(() => {
+    let todoCount = list.filter(item => !item.complete).length;
+    document.title = `To Do List: ${todoCount}`;
+  })
 
   return (
     <>
