@@ -13,6 +13,7 @@ body, html {
         flex-direction:row;
         justify-content:space-between;
         padding:.5em 1em;
+        margin-left: 1rem;
     }
 
     .item {
@@ -20,6 +21,12 @@ body, html {
         padding: 1em;
     }
 
+}
+header {
+    margin: 0 2rem;
+    background-color: slategray;
+    color: #fefefe;
+    padding: .2rem;
 }
 
 .todo {
@@ -38,7 +45,6 @@ body, html {
         label {
             display: flex;
             flex-direction:column;
-            margin-bottom: 1em;
         }
     }
 
@@ -48,34 +54,32 @@ body, html {
         padding:0;
 
         li {
-
             align-items: center;
             display:flex;
             flex-direction:row;
             font-size: .75em;
-            margin: .75em .5em;
 
             &.complete-true {
-              span {
-                background: pink;
+              .alert {
+                background: hsl(350, 100%, 88%);
                 text-decoration:line-through;
                 &:hover {
-                   background: aquamarine;
+                   background: #c0ffdc;
                 }
               }
             }
 
-            span {
-                background: #e0e0e0;
+            .alert {
+                background: hsl(133, 100%, 88%);
+                margin-bottom: 0;
+                border-radius: 0;
                 cursor:pointer;
                 &:hover {
                     background: pink;
                 }
             }
-             span, input {
-                 border: .5px solid #eee;
-                 display:inline-block;
-                 padding: .2em .25em;
+             .alert, input {
+                border: none;
                  width: 300px;
              }
 
@@ -91,4 +95,8 @@ body, html {
         }
     }
 
+}
+
+.navbar-brand {
+    margin-left: 1rem;
 }
