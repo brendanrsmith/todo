@@ -62,7 +62,7 @@ header {
             font-size: .75em;
 
             &.complete-true {
-              .alert {
+              .card {
                 background: hsl(350, 100%, 88%);
                 text-decoration:line-through;
                 &:hover {
@@ -71,8 +71,8 @@ header {
               }
             }
 
-            .alert {
-                background: hsl(133, 100%, 88%);
+            .card {
+                background: hsl(133, 0%, 88%);
                 margin-bottom: 0;
                 border-radius: 0;
                 cursor:pointer;
@@ -80,7 +80,7 @@ header {
                     background: pink;
                 }
             }
-             .alert, input {
+             .card, input {
                 border: none;
                  width: 300px;
              }

@@ -51,6 +51,11 @@ const ToDo = () => {
         .catch(console.error);
     }
   };
+  
+  const _deleteItem = id => {
+    let list2 = list.filter(i => i._id !== id);
+    setList(list2);
+  }
 
   const _getTodoItems = () => {
     fetch(todoAPI, {
@@ -81,6 +86,7 @@ const ToDo = () => {
         <div>
           <TodoList
             list={list}
+            handleDelete={_deleteItem}
             handleComplete={_toggleComplete}
           />
         </div>

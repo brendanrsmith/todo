@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import { Alert } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 function TodoList(props) {
 
@@ -11,10 +10,20 @@ function TodoList(props) {
           className={`complete-${item.complete.toString()}`}
           key={item._id}
         >
-          <Alert onClick={() => props.handleComplete(item._id)}>
-              {item.text} ({item.difficulty}) {' > '} {item.assignee}
-          </Alert>
-          <Button variant="outline-dark" onClick={() => props.handleDelete(item._id)}>X</Button>
+          <Card >
+            <Card.Body onClick={() => props.handleComplete(item._id)}>
+              <Card.Title>
+                {item.text}
+              </Card.Title>
+              <Card.Subtitle>
+                {'>'} {item.assignee}
+              </Card.Subtitle>
+              <Card.Text>
+                difficulty: {item.difficulty}
+              </Card.Text>
+            </Card.Body>
+            <Button variant="outline-dark" onClick={() => props.handleDelete(item._id)}>X</Button>
+          </Card>
         </li>
       ))}
     </ul>
