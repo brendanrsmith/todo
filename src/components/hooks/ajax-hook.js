@@ -71,7 +71,7 @@ const useAjax = (apiUrl, method, body) => {
       method: 'get',
     })
       .then(response => response.data)
-      .then(data => setList(data.results))
+      .then(data => setList(data))
       .catch(console.error);
   };
 
