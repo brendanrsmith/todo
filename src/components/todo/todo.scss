@@ -40,6 +40,12 @@ header {
     justify-content: flex-start;
     margin: 2em;
 
+    .completeBadge {
+        background-color: salmon;
+    }
+    .pendingBadge {
+        background: #688;
+    }
     form {
         border: 1px solid #eee;
         border-radius: .2em;
@@ -48,6 +54,9 @@ header {
         flex-direction:column;
         margin-right: 2em;
 
+        .form-control {
+            margin-bottom: 1em;
+        }
         label {
             display: flex;
             flex-direction:column;
@@ -60,44 +69,55 @@ header {
         padding:0;
 
         li {
-            align-items: center;
-            display:flex;
-            flex-direction:row;
-            font-size: .75em;
+            .toast {
+
+                margin-bottom: 1em;
+                min-width: 40vw;
+                cursor:pointer;
+                .badge {
+                    margin-right: 2em;
+                }
+                .completeBadge {
+                    display: none;
+                }
+                .pendingBadge {
+                  display: block;
+              }
+
+                &:hover {
+                    background: rgba(250, 128, 114, 0.5);
+                }
+
+                .toast-header {
+                    display: flex;
+
+                    strong {
+                        margin-right: auto;
+                    }
+
+                    button {
+                        background: transparent;
+                        border:none;
+                        cursor:pointer;
+                        align-self: flex-end;
+                    }
+                }
+            }
 
             &.complete-true {
-              .card {
-                background: hsl(350, 100%, 88%);
-                text-decoration:line-through;
-                &:hover {
-                   background: #c0ffdc;
+                .toast {
+                // background-color: #0000000f;
+                  &:hover {
+                     background: rgba(102, 136, 136, 0.5);
+                  }
+                  .completeBadge {
+                      display: block;
+                  }
+                  .pendingBadge {
+                    display: none;
+                }
                 }
               }
-            }
-
-            .card {
-                background: hsl(133, 0%, 88%);
-                margin-bottom: 0;
-                border-radius: 0;
-                cursor:pointer;
-                &:hover {
-                    background: pink;
-                }
-            }
-             .card, input {
-                border: none;
-                 width: 50vw;
-             }
-
-            button {
-                background: transparent;
-                border:none;
-                // color:blue;
-                cursor:pointer;
-                // padding:0;
-                // margin: 0 .75em;
-            }
-
         }
     }
 
