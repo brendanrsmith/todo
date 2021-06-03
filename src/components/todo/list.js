@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Badge, Button, Toast } from 'react-bootstrap';
 
 function TodoList(props) {
 
@@ -10,20 +10,20 @@ function TodoList(props) {
           className={`complete-${item.complete.toString()}`}
           key={item._id}
         >
-          <Card >
-            <Card.Body onClick={() => props.handleComplete(item._id)}>
-              <Card.Title>
-                {item.text}
-              </Card.Title>
-              <Card.Subtitle>
-                {'>'} {item.assignee}
-              </Card.Subtitle>
-              <Card.Text>
+          <Toast>
+            <Toast.Header closeButton={false}>
+              <Badge className="completeBadge">Complete</Badge>
+              <Badge className="pendingBadge">Pending</Badge>
+              <strong>{item.assignee}</strong>
+              <Button className="btn-close" onClick={() => props.handleDelete(item._id)}>X</Button>
+            </Toast.Header>
+            <Toast.Body onClick={() => props.handleComplete(item._id)}>
+              <p>{item.text}</p>
+              <small>
                 difficulty: {item.difficulty}
-              </Card.Text>
-            </Card.Body>
-            <Button variant="outline-dark" onClick={() => props.handleDelete(item._id)}>X</Button>
-          </Card>
+              </small>
+            </Toast.Body>
+          </Toast>
         </li>
       ))}
     </ul>

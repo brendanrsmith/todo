@@ -7,9 +7,9 @@ import './todo.scss';
 
 const ToDo = () => {
 
-  const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
-  // problem with my API server - not sure
-  // const todoAPI = 'https://brsmith-api-server.herokuapp.com/todos';
+  // const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo'; // class API
+
+  const todoAPI = 'https://brsmith-api-server.herokuapp.com/todos'; // BRS API
 
   const [_addItem, _toggleComplete, _deleteItem, list] = useAjax(todoAPI);
 

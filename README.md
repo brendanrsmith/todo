@@ -7,7 +7,7 @@
 ### Links and Resources
 
 - [deployed site](https://distracted-galileo-14f56e.netlify.app/)
-- [pull request](https://github.com/brendigler/todo/pull/1)
+- [pull request](https://github.com/brendigler/todo/pull/4)
 
 ### Setup
 
