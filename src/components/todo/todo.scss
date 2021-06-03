@@ -77,13 +77,6 @@ header {
                 .badge {
                     margin-right: 2em;
                 }
-                .completeBadge {
-                    display: none;
-                }
-                .pendingBadge {
-                  display: block;
-              }
-
                 &:hover {
                     background: rgba(250, 128, 114, 0.5);
                 }
@@ -110,12 +103,6 @@ header {
                   &:hover {
                      background: rgba(102, 136, 136, 0.5);
                   }
-                  .completeBadge {
-                      display: block;
-                  }
-                  .pendingBadge {
-                    display: none;
-                }
                 }
               }
         }

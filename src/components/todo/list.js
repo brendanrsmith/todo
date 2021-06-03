@@ -12,8 +12,9 @@ function TodoList(props) {
         >
           <Toast>
             <Toast.Header closeButton={false}>
-              <Badge className="completeBadge">Complete</Badge>
-              <Badge className="pendingBadge">Pending</Badge>
+              <Badge className={item.complete ? "completeBadge" : "pendingBadge"}>
+                {item.complete ? 'Complete' : 'Pending'}
+              </Badge>
               <strong>{item.assignee}</strong>
               <Button className="btn-close" onClick={() => props.handleDelete(item._id)}>X</Button>
             </Toast.Header>

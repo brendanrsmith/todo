@@ -2,6 +2,7 @@ import React from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
 import useAjax from '../hooks/ajax-hook';
+import ListSettings from './settings';
 
 import './todo.scss';
 
@@ -21,12 +22,15 @@ const ToDo = () => {
         </h2>
       </header>
 
+      <div>
+        <ListSettings />
+      </div>
+
       <section className="todo">
 
         <div>
           <TodoForm handleSubmit={_addItem} />
         </div>
-
         <div>
           <TodoList
             list={list}
