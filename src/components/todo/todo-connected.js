@@ -1,97 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
+import useAjax from '../hooks/ajax-hook';
 
 import './todo.scss';
 
-const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
-// problem with my API server - not sure
-// const todoAPI = 'https://brsmith-api-server.herokuapp.com/todos';
-
-
 const ToDo = () => {
 
-  const [list, setList] = useState([]);
+  const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
+  // problem with my API server - not sure
+  // const todoAPI = 'https://brsmith-api-server.herokuapp.com/todos';
 
-  const _addItem = (item) => {
-    item.due = new Date();
-    fetch(todoAPI, {
-      method: 'post',
-      mode: 'cors',
-      cache: 'no-cache',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(item)
-    })
-      .then(response => response.json())
-      .then(savedItem => {
-        setList([...list, savedItem])
-      })
-      .catch(console.error);
-  };
-
-  const _toggleComplete = id => {
-
-    let item = list.filter(i => i._id === id)[0] || {};
-
-    if (item._id) {
-
-      item.complete = !item.complete;
-
-      let url = `${todoAPI}/${id}`;
-
-      fetch(url, {
-        method: 'put',
-        mode: 'cors',
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(item)
-      })
-        .then(response => response.json())
-        .then(savedItem => {
-          setList(list.map(listItem => listItem._id === item._id ? savedItem : listItem));
-        })
-        .catch(console.error);
-    }
-  };
-
-  const _deleteItem = id => {
-
-    let item = list.filter(i => i._id === id)[0] || {};
-
-    if (item._id) {
-
-      let url = `${todoAPI}/${id}`;
-
-      fetch(url, {
-        method: 'delete',
-        mode: 'cors',
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' }
-      })
-        .then(() => {
-          _getTodoItems();
-        })
-        .catch(console.error);
-    }
-  };
-
-  const _getTodoItems = () => {
-    fetch(todoAPI, {
-      method: 'get',
-      mode: 'cors',
-    })
-      .then(data => data.json())
-      .then(data => setList(data.results))
-      .catch(console.error);
-  };
-
-  useEffect(_getTodoItems, []);
-
-  // Update title of browser with complete / incomplete count
-  useEffect(() => {
-    let todoCount = list.filter(item => !item.complete).length;
-    document.title = `To Do List: ${todoCount}`;
-  })
+  const [_addItem, _toggleComplete, _deleteItem, list] = useAjax(todoAPI);
 
   return (
     <>

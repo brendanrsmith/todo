@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import useForm from '../hooks/form-hook';
 
 
-function TodoForm(props) {
+const TodoForm = (props) => {
 
   const [handleChange, handleSubmit] = useForm(submittor);
 
