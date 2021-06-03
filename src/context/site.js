@@ -3,18 +3,21 @@ import React, { useState } from 'react';
 export const SettingsContext = React.createContext();
 
 function SettingsProvider(props) {
-  const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(true);
   const [displayCount, setDisplayCount] = useState(5);
-  const [sortField, setSortField] = useState('difficulty');
-
+  const [sortField, setSortField] = useState('name');
+  
+  const toggleShowCompleted = () => setCompleted(prevCompleted => !prevCompleted);
+  
   const state = {
     completed,
     displayCount,
     sortField,
-    setCompleted,
+    toggleShowCompleted,
     setDisplayCount,
     setSortField
   }
+
 
   return (
     <SettingsContext.Provider value={state}>
