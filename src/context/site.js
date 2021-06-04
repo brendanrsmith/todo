@@ -7,9 +7,9 @@ function SettingsProvider(props) {
   const [displayCount, setDisplayCount] = useState(5);
   const [sortField, setSortField] = useState('name');
   const [totalTasks, setTotalTasks] = useState(0);
-  
+
   const toggleShowCompleted = () => setCompleted(prevCompleted => !prevCompleted);
-  
+
   const state = {
     completed,
     displayCount,
