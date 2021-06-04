@@ -12,7 +12,7 @@ body, html {
         display:flex;
         flex-direction:row;
         justify-content:space-between;
-        padding:.5em 1em;
+        padding: .5em 1em;
         margin: 1rem;
     }
 
@@ -26,13 +26,26 @@ header {
     margin: 0 2rem;
     background-color: #688;
     color: #fefefe;
-    padding: .3rem;
+    padding: .5rem 1rem;
     h2 {
         font-size: 1.5em;
         font-weight: 300;
     }
 }
+.settings{
+    display: flex;
+    align-items: baseline;
+    margin-left: 2rem;
+    margin-top: 1em;
 
+    div {
+        margin-left: 1em;
+    }
+    select {
+        padding: 2px;
+        margin-left: .5rem;
+    }
+}
 .todo {
 
     display:flex;
@@ -77,13 +90,6 @@ header {
                 .badge {
                     margin-right: 2em;
                 }
-                .completeBadge {
-                    display: none;
-                }
-                .pendingBadge {
-                  display: block;
-              }
-
                 &:hover {
                     background: rgba(250, 128, 114, 0.5);
                 }
@@ -110,12 +116,6 @@ header {
                   &:hover {
                      background: rgba(102, 136, 136, 0.5);
                   }
-                  .completeBadge {
-                      display: block;
-                  }
-                  .pendingBadge {
-                    display: none;
-                }
                 }
               }
         }
@@ -130,4 +130,10 @@ header {
 .navbar {
     margin-bottom: 1rem;
     font-weight: 300;
+}
+.pagination {
+    li {
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+    }
 }

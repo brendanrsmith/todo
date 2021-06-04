@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import SettingsContext from './context/site.js';
 import App from './app.js';
 
 function Main() {
   return (
-    <App />
+    <SettingsContext>
+      <App />
+    </SettingsContext>
   )
 }
 
