@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Badge, Button, Toast } from 'react-bootstrap';
+import { SettingsContext } from '../../context/site';
 
 function TodoList(props) {
+  const context = useContext(SettingsContext);
+  let list = props.list;
 
+  if (context.completed) {
+    list = list.filter(item => !item.complete);
+  }
+  
   return (
     <ul>
-      {props.list.map(item => (
+      {list.map(item => (
         <li
           className={`complete-${item.complete.toString()}`}
           key={item._id}

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Button from 'react-bootstrap/Button';
 import { SettingsContext } from '../../context/site';
 
 function ListSettings(props) {
@@ -8,7 +9,7 @@ function ListSettings(props) {
     <section>
       <h4>Settings:</h4>
       <div>
-        <button onClick={() => context.toggleShowCompleted()}>set show completed: True</button>
+        <Button variant="outline-dark" onClick={() => context.toggleShowCompleted()}>Toggle show completed</Button>
       </div>
       <div>
         <label htmlFor="sortby">sort by</label>
