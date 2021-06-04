@@ -6,10 +6,31 @@ function TodoList(props) {
   const context = useContext(SettingsContext);
   let list = props.list;
 
+
+  if (context.sortField === 'name') {
+    list.sort((a, b) => {
+      if (a.assignee.toUpperCase() > b.assignee.toUpperCase()) return 1;
+      if (a.assignee.toUpperCase() < b.assignee.toUpperCase()) return -1;
+      return 0;
+    });
+  }
+  else if (context.sortField === 'difficulty') {
+    list.sort((a, b) => {
+      return a.difficulty - b.difficulty;
+    });
+  }
+  else if (context.sortField === 'task') {
+    list.sort((a, b) => {
+      if (a.text.toUpperCase() > b.text.toUpperCase()) return 1;
+      if (a.text.toUpperCase() < b.text.toUpperCase()) return -1;
+      return 0;
+    });
+  }
+
   if (context.completed) {
     list = list.filter(item => !item.complete);
   }
-  
+
   return (
     <ul>
       {list.map(item => (
