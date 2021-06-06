@@ -13,7 +13,7 @@ const ToDo = () => {
   // const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo'; // class API
   // const todoAPI = 'https://brsmith-api-server.herokuapp.com/todos'; // BRS API
 
-  const [isLoading, list, getTodoItems, addItem, deleteItem, toggleComplete] = useTodoApi();
+  const [ , list, getTodoItems, addItem, deleteItem, toggleComplete] = useTodoApi();
   useEffect(getTodoItems, []);
   
   return (

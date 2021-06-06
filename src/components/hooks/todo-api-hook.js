@@ -3,8 +3,8 @@ import useAjax from './ajax-hook'
 const BASE_URL = 'https://brsmith-api-server.herokuapp.com/todos';
 
 const useTodoApi = () => {
-  const [isLoading, list, error, request] = useAjax();
-  const [isUpdating, updateResponse, updateError, updateRequest] = useAjax();
+  const [isLoading, list,  , request] = useAjax();
+  const [ , updateResponse, updateError, updateRequest] = useAjax();
 
   
   const getTodoItems = () => {
