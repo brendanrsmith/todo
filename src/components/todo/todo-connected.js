@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
-import useAjax from '../hooks/ajax-hook';
+// import useAjax from '../hooks/ajax-hook';
 import ListSettings from './settings';
+import useTodoApi from '../hooks/todo-api-hook.js';
+
 
 import './todo.scss';
 
 const ToDo = () => {
 
   // const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo'; // class API
-  const todoAPI = 'https://brsmith-api-server.herokuapp.com/todos'; // BRS API
+  // const todoAPI = 'https://brsmith-api-server.herokuapp.com/todos'; // BRS API
 
-  const [_addItem, _toggleComplete, _deleteItem, list] = useAjax(todoAPI);
-
+  const [ , list, getTodoItems, addItem, deleteItem, toggleComplete] = useTodoApi();
+  useEffect(getTodoItems, []);
+  
   return (
     <>
       <header>
@@ -28,13 +31,14 @@ const ToDo = () => {
       <section className="todo">
 
         <div>
-          <TodoForm handleSubmit={_addItem} />
+          <TodoForm handleSubmit={addItem} />
         </div>
         <div>
           <TodoList
             list={list}
-            handleDelete={_deleteItem}
-            handleComplete={_toggleComplete}
+            handleDelete={deleteItem}
+            handleComplete={toggleComplete}
+          // handleUpdate={_updateItem}
           />
         </div>
       </section>

@@ -1,94 +1,26 @@
-import { useState, useEffect } from 'react';
-const axios = require('axios').default;
+import axios from 'axios';
+import { useState } from 'react'
 
-// TODO: pass in method, body from todo-connected
-const useAjax = (apiUrl, method, body) => {
+const useAjax = () => {
 
-  const [list, setList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState(null);
 
-  const _addItem = (item) => {
-    item.due = new Date();
-
+  const request = (url, method, body = {}) => {
+    setIsLoading(true);
     axios({
-      method: 'post',
-      url: apiUrl,
+      method: method,
+      url: url,
       headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify(item)
+      data: body
     })
-      .then(response => response.data)
-      .then(savedItem => {
-        setList([...list, savedItem])
-      })
-      .catch(console.error);
+    .then(axiosResponse => setResponse(axiosResponse.data))
+    .catch(axiosError => setError(axiosError))
+    .finally(() => setIsLoading(false));
   };
 
-  const _toggleComplete = id => {
-
-    const item = list.filter(i => i._id === id)[0] || {};
-
-    if (item._id) {
-
-      item.complete = !item.complete;
-
-      let url = `${apiUrl}/${id}`;
-
-      axios({
-        url: url,
-        method: 'put',
-        headers: { 'Content-Type': 'application/json' },
-        data: JSON.stringify(item)
-      })
-        .then(response => response.data)
-        .then(savedItem => {
-          setList(list.map(listItem => listItem._id === item._id ? savedItem : listItem));
-        })
-        .catch(console.error);
-    }
-  };
-
-  const _deleteItem = id => {
-
-    let item = list.filter(i => i._id === id)[0] || {};
-
-    if (item._id) {
-
-      let url = `${apiUrl}/${id}`;
-
-      axios({
-        url: url,
-        method: 'delete',
-      })
-        .then(() => {
-          _getTodoItems();
-        })
-        .catch(console.error);
-    }
-  };
-
-  const _getTodoItems = () => {
-    axios({
-      url: apiUrl,
-      method: 'get',
-    })
-      .then(response => response.data)
-      .then(data => setList(data))
-      .catch(console.error);
-  };
-
-  useEffect(_getTodoItems, []);
-
-  // Update title of browser with complete / incomplete count
-  useEffect(() => {
-    let todoCount = list.filter(item => !item.complete).length;
-    document.title = `To Do List: ${todoCount}`;
-  })
-
-  return [
-    _addItem,
-    _toggleComplete,
-    _deleteItem,
-    list
-  ]
+  return [isLoading, response, error, request];
 }
 
 export default useAjax;

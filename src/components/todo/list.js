@@ -61,7 +61,7 @@ function TodoList(props) {
                 <strong>{item.assignee}</strong>
                 <Button className="btn-close" onClick={() => props.handleDelete(item._id)}>X</Button>
               </Toast.Header>
-              <Toast.Body onClick={() => props.handleComplete(item._id)}>
+              <Toast.Body onClick={() => props.handleComplete(item)}>
                 <p>{item.text}</p>
                 <small>
                   difficulty: {item.difficulty}
