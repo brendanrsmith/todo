@@ -6,7 +6,7 @@
 
 ### Links and Resources
 
-- [deployed site](https://distracted-galileo-14f56e.netlify.app/)
+- [deployed site](https://www.brendansmith.dev/todo)
 - [Pull Request: Context API](https://github.com/brendigler/todo/pull/5)
 - [Pull Request: Custom Hooks](https://github.com/brendigler/todo/pull/4)
 - [Pull Request: Hooks API](https://github.com/brendigler/todo/pull/2)
