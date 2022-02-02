@@ -4,6 +4,10 @@
 
 ### Author: Brendan Smith
 
+### Description
+A React web application using context for state management, Axios for network requests, an Express server, and a MongoDB Database. The backend is deployed via Heroku and the frontend is deployed via Github Pages.
+
+
 ### Links and Resources
 
 - [deployed site](https://www.brendansmith.dev/todo)
